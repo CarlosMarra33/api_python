@@ -1,0 +1,18 @@
+documentação api python
+
+entradas(todas as entradas, até o momento tem que ser em Json):
+>>>>>>>>>Para criar um produto
+url: /produto/criar
+parametros: name, img, description, price, qtd, category || nome -> único
+
+>>>>>>>>>Para buscar um produto:
+url: /produto/buscar/nome
+body: pode ser o mesmo que a criação de produto ou {'name' : ''}
+
+>>>>>>>>Para buscar todos os produtos:
+url: /produto/buscar
+não tem body
+
+>>>>>>>>Para criar um registro de usuário:
+url: /user/register
+parametros:  name, email, cpf, cep, password, endereco || email, cpf -> únicos
