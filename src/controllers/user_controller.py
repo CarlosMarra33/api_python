@@ -28,8 +28,28 @@ class User_controller():
         body = request.get_json()
         # ! body para login tem que ser email e password
         try:
-            mongo.login_service(body)
+            user= mongo.login_service(body)
+            return user
         except print(0):
             pass   
-
         return 'login'
+
+    @app.route('/user/profile', methods = ['GET'])
+    def user_profile():
+        body = request.get_json()
+        
+        return mongo.get_user(body['_email'])
+    
+    @app.route('/user/prifle/edit', methods = ['PUT'])
+    def edit_user_profile():
+        body = request.get_json()
+        try:
+            return mongo.edit_user_profile(body)    
+        except Exception as e:
+            return '500'
+        
+        
+
+
+        
+        

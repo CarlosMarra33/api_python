@@ -1,3 +1,4 @@
+from json import dumps
 import src.data.mongodb as mong
 from src.models.user import User
 from src.security.cripto_service import Security
@@ -14,9 +15,18 @@ class User_services():
         db.users.insert(dic)
 
     def login_service(data):   
-        user  = db.users.find_one({'_email': data['email']})
-        decoded_password = Security.decode(user['_email'], user['password'])
+        result  = db.users.find_one({'_email': data['email']})
+        decoded_password = Security.decode(result['_email'], result['password'])
         if decoded_password.decode() == data['password']:
-            return user
-        else: return 'wrong password'
-        
+            user= User(result['_name'], result['_email'], result['_cpf'], result['_cep'], result['_endereco'])
+            return dumps(user)
+        else: return 500
+    
+    def get_user(data):
+        return db.users.find_one({'_email': data})
+    
+    def edit_user_profile(data):
+        query = {'_email': data['email']}
+        updated_user= {"$set": data}
+        db.users.update_one(query, updated_user)
+        return '200'
