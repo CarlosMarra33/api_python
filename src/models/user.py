@@ -1,11 +1,10 @@
 from src.models.endereco import Endereco
 class User():
-    def __init__(self, name, email, password, cpf, cep):
+    def __init__(self, name='', email='', password='', cpf='', cep=''):
         self._name = name
         self._email = email
         self._cpf = cpf
         self._cep = cep
-        self._password = password
         self._endereco = []
     
     def add_endereco(self, endereco=Endereco()):
