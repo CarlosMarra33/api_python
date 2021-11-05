@@ -1,11 +1,13 @@
 from src.models.product import Product
 import src.data.mongodb as mong
+
 db = mong.db
-class Products_services():
-    
+
+
+class Products_services:
     def add_products(data=Product()):
         db.products.insert(data.__dict__)
-        
+
     def find_product(data):
         return db.products.find_one(data)
 
