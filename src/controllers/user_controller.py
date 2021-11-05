@@ -11,21 +11,25 @@ class User_controller():
     @app.route('/user/register', methods=['POST'])
     def register():
         body = request.get_json()
+        print(body)
         try:
-            if mongo.get_user_by_email({'email': body['email']} != None):
+            if mongo.check_user({'email': body['email']} == 0):
                 user = User(body['name'], body['email'], body['cpf'],
-                body['cep'], body['password'])
-                user.add_endereco(Endereco(body['street'], body['number'],
-                body['complement']))
-                mongo.register_user(user)
+                body['cep'])
+                mongo.register_user(user, body['password'])
+            else:
+                return 'email já existe'
         except print(0):
             pass
+        return 'user registrado'
 
     @app.route('/user/login', methods=['POST'])
     def login():
         body = request.get_json()
         # ! body para login tem que ser email e password
         try:
-            mongo.get_user_by_email(body)
+            mongo.login_service(body)
         except print(0):
             pass   
+
+        return 'login'
