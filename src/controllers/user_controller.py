@@ -3,7 +3,7 @@ from bson.json_util import dumps
 from src.server.instance import server
 from src.models.user import User
 from src.models.endereco import Endereco
-from src.DAL.user_services import User_services as mongo
+from src.data.user_services import User_services as mongo
 app = server.app
 
 class User_controller():

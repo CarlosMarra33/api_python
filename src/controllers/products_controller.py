@@ -2,7 +2,7 @@ from flask import request
 from bson.json_util import dumps
 from src.server.instance import server
 from src.models.product import Product
-from src.DAL.product_services import Products_services as mongo
+from src.data.product_services import Products_services as mongo
 app = server.app
 
 

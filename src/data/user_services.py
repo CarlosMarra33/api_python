@@ -1,4 +1,4 @@
-import src.DAL.mongodb as mong
+import src.data.mongodb as mong
 from src.models.user import User
 from src.security.cripto_service import Security
 db = mong.db

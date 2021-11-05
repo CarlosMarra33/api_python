@@ -1,5 +1,5 @@
 from src.models.product import Product
-import src.DAL.mongodb as mong
+import src.data.mongodb as mong
 db = mong.db
 class Products_services():
     
